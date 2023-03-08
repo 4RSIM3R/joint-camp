@@ -1,6 +1,6 @@
 class TodoModel {
-  final String? task;
-  final String? createdAt;
+  final String title;
+  final String date;
 
-  TodoModel({this.task, this.createdAt});
+  TodoModel({required this.title, required this.date});
 }

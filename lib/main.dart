@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:joint_camp/pages/counter_page.dart';
-import 'package:joint_camp/pages/home.dart';
+import 'components/router.dart' as route;
 
 void main() {
   runApp(const MyApp());
@@ -9,16 +8,14 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Joints Todo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: HomePage(),
+      title: "Joints Todo",
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(primarySwatch: Colors.blue),
+      onGenerateRoute: route.Router.generateRoute,
+      initialRoute: route.homeRoute,
     );
   }
 }
-

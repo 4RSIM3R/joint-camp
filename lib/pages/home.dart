@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:joint_camp/pages/todo_page.dart';
+import 'package:joint_camp/components/router.dart';
+import 'package:joint_camp/components/appbar.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -7,60 +8,50 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        title: const Text(
-          "JOINTS Todo",
-          style: TextStyle(color: Colors.black),
-        ),
-        centerTitle: true,
-        elevation: 0,
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Image.network(
-              'https://img.freepik.com/free-vector/office-concept-illustration_114360-795.jpg',
-              width: 350,
-              height: 350,
-            ),
-            SizedBox(height: 12),
-            Text(
-              "JOINTSCamp",
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.w500),
-            ),
-            SizedBox(height: 12),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 24),
-              child: Text(
-                "serangkaian acara bootcamp yang\ndilaksanakan selama 4 minggu",
-                textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 16),
+      appBar: appbar(),
+      body: SingleChildScrollView(
+        child: Center(
+          child: Column(
+            children: [
+              Image.network(
+                "https://img.freepik.com/free-vector/businessman-holding-pencil-big-complete-checklist-with-tick-marks_1150-35019.jpg",
+                width: MediaQuery.of(context).size.width,
               ),
-            ),
-            SizedBox(height: 24),
-            InkWell(
-              onTap: () {
-                Navigator.of(context).push(MaterialPageRoute(builder: (context) => TodoPage()));
-              },
-              child: Container(
-                height: 45,
-                width: 125,
-                decoration: BoxDecoration(
-                  color: Colors.blue,
-                  borderRadius: BorderRadius.circular(25),
+              const SizedBox(height: 20),
+              const Text(
+                "Joint Todo",
+                style: TextStyle(fontSize: 24, fontWeight: FontWeight.w500),
+              ),
+              const SizedBox(height: 20),
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 20),
+                child: Text(
+                  "application allows users to input and organize their daily tasks.\nWhile the app currently has limited features, there are plans to develop additional features, which will make it even more useful for users to manage their tasks efficiently.",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: 16),
                 ),
-                child: Center(
-                  child: Text(
-                    "Get Started",
-                    style: TextStyle(color: Colors.white, fontSize: 14),
+              ),
+              const SizedBox(height: 40),
+              InkWell(
+                onTap: () {
+                  Navigator.pushNamed(context, todoRoute);
+                },
+                child: Container(
+                  height: 45,
+                  width: MediaQuery.of(context).size.width * 0.4,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      color: Colors.blue),
+                  child: const Center(
+                    child: Text(
+                      "Get Started",
+                      style: TextStyle(color: Colors.white, fontSize: 16),
+                    ),
                   ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
